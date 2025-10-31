@@ -1,155 +1,173 @@
-# The Lost Key: Shadows of the Golden Door
+# Shadows of the Golden Door
 
-## Story:
+## Game Story
+
 You are Alex, a curious adventurer who has ventured into the Ancient Labyrinth, a mysterious maze said to be filled with treasure and secrets. However, the maze is not just a place of riches – it's also a place of danger, with twisting corridors, hidden traps, and locked doors.
 
 The only way out is through the Golden Door – but it is locked. To escape the maze, you must collect 3 Lost Keys hidden throughout the maze. Each key unlocks a new part of the labyrinth, and ultimately, the Golden Door will open, allowing you to escape.
 
 As you navigate the maze, you will face:
+- Dangerous traps that can hurt you if you're not careful
+- Locked doors that require keys to open
+- Hidden secrets that will help you on your journey
 
-Dangerous traps that can hurt you if you're not careful.
-Locked doors that require keys to open.
-Hidden secrets that will help you on your journey.
 Will you find all the keys and escape the maze, or will you get lost forever?
 
-Here is an 8 image Storyboard to illistrate a desired direction and end results for our game. This image is a placeholder and will be updated as the project proceeds. 
+Here is an 8 image Storyboard to illustrate a desired direction and end results for our game. This image is a placeholder and will be updated as the project proceeds.
 
 ![image](https://github.com/user-attachments/assets/c9d56d78-1127-470f-8e84-2645333466bb)
 
+---
 
 ## Setup Guide
 
+This guide will help you set up your development environment to run and contribute to "Shadows of the Golden Door".
 
-This  will help to quickly set up the development environment using **Python**, **Pygame**, and a **virtual environment**.
+### Prerequisites
+
+Before you begin, you'll need to have Python 3.x installed on your system.
 
 ---
 
+## Step 1: Install Python
 
+### Windows
 
-## 🐍 Step 1: Install Python 3.x
-
-### 🪟 Windows
-
-1. Go to the [official Python website](https://www.python.org/downloads/).
-2. Download the latest **Python 3.x** installer for Windows.
-3. During installation, **check** the box that says:
-
+1. Visit the official Python website: [python.org/downloads](https://www.python.org/downloads/)
+2. Download the latest Python 3.x installer for Windows
+3. Run the installer
+   - **Important**: Check the box "Add Python to PATH" during installation
+4. Click "Install Now"
+5. Verify the installation by opening Command Prompt and typing:
+   ```bash
+   python --version
    ```
-   Add Python 3.x to PATH
+   You should see something like `Python 3.11.x`
+
+### macOS
+
+1. **Option A: Using the Official Installer**
+   - Visit [python.org/downloads](https://www.python.org/downloads/)
+   - Download the latest Python 3.x installer for macOS
+   - Run the `.pkg` file and follow the installation wizard
+
+2. **Option B: Using Homebrew** (Recommended)
+   - If you have Homebrew installed, open Terminal and run:
+     ```bash
+     brew install python3
+     ```
+
+3. Verify the installation:
+   ```bash
+   python3 --version
    ```
-4. Complete the installation.
+   You should see something like `Python 3.11.x`
 
-Verify your installation:
+### Linux
 
+Most Linux distributions come with Python pre-installed. If not:
+
+**Ubuntu/Debian:**
 ```bash
-python --version
+sudo apt update
+sudo apt install python3 python3-pip
 ```
 
-Expected output:
-
+**Fedora:**
+```bash
+sudo dnf install python3 python3-pip
 ```
-Python 3.x.x
+
+**Arch Linux:**
+```bash
+sudo pacman -S python python-pip
+```
+
+Verify the installation:
+```bash
+python3 --version
 ```
 
 ---
 
-### 🍎 macOS
+## Step 2: Install Pygame
 
-1. Open **Terminal**.
-2. Install Python via Homebrew:
+Once Python is installed, you can install Pygame using pip (Python's package manager).
 
-   ```bash
-   brew install python
-   ```
-3. Verify:
+### All Operating Systems
 
-   ```bash
-   python3 --version
-   ```
-
-If you don’t have Homebrew, install it first from [brew.sh](https://brew.sh/).
-
----
-
-### 🐧 Linux (Ubuntu/Debian)
-
-1. Open your terminal.
-2. Run:
-
-   ```bash
-   sudo apt update
-   sudo apt install python3 python3-pip -y
-   ```
-3. Verify installation:
-
-   ```bash
-   python3 --version
-   ```
-
----
-
-## 🎮 Step 2: Install Pygame
-
-Once Python is installed, you can install Pygame using `pip`:
+Open your terminal or command prompt and run:
 
 ```bash
 pip install pygame
 ```
 
-> 💡 If `pip` doesn’t work, try:
->
-> ```bash
-> python -m pip install pygame
-> ```
->
-> or
->
-> ```bash
-> python3 -m pip install pygame
-> ```
+**For macOS/Linux users**, you might need to use `pip3`:
+```bash
+pip3 install pygame
+```
 
-### ✅ Test Your Installation
+### Verify Pygame Installation
 
-Run:
+Test that Pygame is installed correctly by running the built-in aliens example:
 
 ```bash
 python -m pygame.examples.aliens
 ```
 
-If a small window opens with a game demo, your installation is successful!
+If a game window opens with aliens, Pygame is installed correctly!
 
 ---
 
-## 🧩 Step 3: Set Up a Virtual Environment
+## Step 3: Set Up a Virtual Environment (Recommended)
 
-A **virtual environment** keeps project dependencies separate from your global Python setup.
+A virtual environment keeps your project dependencies isolated from other Python projects.
 
-### Create the Environment
+### Creating a Virtual Environment
 
-From your project directory:
-
+**Windows:**
 ```bash
+# Navigate to your project directory
+cd path\to\ShadowsOfTheGoldenDoor
+
+# Create virtual environment
 python -m venv venv
 ```
 
-### Activate It
+**macOS/Linux:**
+```bash
+# Navigate to your project directory
+cd path/to/ShadowsOfTheGoldenDoor
 
-* **Windows (CMD or PowerShell):**
+# Create virtual environment
+python3 -m venv venv
+```
 
-  ```bash
-  venv\Scripts\activate
-  ```
-* **macOS / Linux:**
+### Activating the Virtual Environment
 
-  ```bash
-  source venv/bin/activate
-  ```
+**Windows:**
+```bash
+venv\Scripts\activate
+```
 
-You should now see `(venv)` at the beginning of your terminal prompt — that means the environment is active.
+**macOS/Linux:**
+```bash
+source venv/bin/activate
+```
 
-### Deactivate
+When activated, you should see `(venv)` at the beginning of your command prompt.
 
-When you’re done:
+### Installing Dependencies in Virtual Environment
+
+With the virtual environment activated, install Pygame:
+
+```bash
+pip install pygame
+```
+
+### Deactivating the Virtual Environment
+
+When you're done working on the project:
 
 ```bash
 deactivate
@@ -157,31 +175,85 @@ deactivate
 
 ---
 
-## 🧪 Step 4: Verify Your Setup 
+## Step 4: Verify Your Setup
 
-To confirm everything works, run a simple Pygame test:
+Let's make sure everything is working correctly!
 
-Create a file named `test_pygame.py` in your project folder:
+### Clone the Repository
 
-```python
-import pygame
-
-pygame.init()
-screen = pygame.display.set_mode((400, 300))
-pygame.display.set_caption("Pygame Test")
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-pygame.quit()
-```
-
-Run it:
+If you haven't already:
 
 ```bash
-python test_pygame.py
+git clone https://github.com/bijiyiqi2017/ShadowsOfTheGoldenDoor.git
+cd ShadowsOfTheGoldenDoor
 ```
 
-If a window opens and closes without errors, your setup is complete!
+### Run the Game
+
+1. Activate your virtual environment (if using one)
+2. Run the game:
+
+```bash
+python main.py
+```
+
+If a game window opens with the title "Shadows of the Golden Door", congratulations! Your setup is complete!
+
+---
+
+## Troubleshooting
+
+### "python is not recognized" (Windows)
+- Python wasn't added to PATH during installation
+- Reinstall Python and check "Add Python to PATH"
+- Or manually add Python to your system's PATH environment variable
+
+### "pip: command not found"
+- Try using `python -m pip` instead of just `pip`
+- On macOS/Linux, try `pip3` instead of `pip`
+
+### Pygame won't install
+- Make sure you have the latest pip: `pip install --upgrade pip`
+- On Linux, you might need additional dependencies:
+  ```bash
+  sudo apt-get install python3-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev
+  ```
+
+### Permission errors on macOS/Linux
+- Use `pip3 install --user pygame` to install for your user only
+- Or use a virtual environment (recommended)
+
+---
+
+## Contributing
+
+Now that your environment is set up, you're ready to contribute! Check out our [Issues](https://github.com/bijiyiqi2017/ShadowsOfTheGoldenDoor/issues) page for tasks you can help with.
+
+### Quick Start for Contributors
+
+1. Fork this repository
+2. Clone your fork
+3. Create a new branch: `git checkout -b feature/your-feature-name`
+4. Make your changes
+5. Commit: `git commit -m "feat: description of your changes"`
+6. Push: `git push origin feature/your-feature-name`
+7. Open a Pull Request
+
+---
+
+## Additional Resources
+
+- [Python Official Documentation](https://docs.python.org/3/)
+- [Pygame Documentation](https://www.pygame.org/docs/)
+- [Virtual Environments Guide](https://docs.python.org/3/tutorial/venv.html)
+
+---
+
+## License
+
+- [License](https://github.com/HirulaAbesignha/ShadowsOfTheGoldenDoor/blob/main/LICENSE)
+
+---
+
+Good luck on your adventure through the Ancient Labyrinth!
 
