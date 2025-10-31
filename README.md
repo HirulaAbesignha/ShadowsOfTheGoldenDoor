@@ -157,7 +157,7 @@ deactivate
 
 ---
 
-## 🧪 Step 4: Verify Your Setup (Optional)
+## 🧪 Step 4: Verify Your Setup 
 
 To confirm everything works, run a simple Pygame test:
 
