@@ -16,6 +16,7 @@ Will you find all the keys and escape the maze, or will you get lost forever?
 Here is an 8 image Storyboard to illustrate a desired direction and end results for our game. This image is a placeholder and will be updated as the project proceeds.
 
 ![image](https://github.com/user-attachments/assets/c9d56d78-1127-470f-8e84-2645333466bb)
+
 ---
 
 ## Setup Guide
@@ -255,3 +256,4 @@ Now that your environment is set up, you're ready to contribute! Check out our [
 ---
 
 Good luck on your adventure through the Ancient Labyrinth!
+
