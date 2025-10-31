@@ -250,7 +250,7 @@ Now that your environment is set up, you're ready to contribute! Check out our [
 
 ## License
 
-[Add your license information here]
+- [License](https://github.com/HirulaAbesignha/ShadowsOfTheGoldenDoor/blob/main/LICENSE)
 
 ---
 
