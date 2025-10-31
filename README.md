@@ -1,5 +1,4 @@
-# Game_Off_2024-
-## The Lost Key: Shadows of the Golden Door
+# The Lost Key: Shadows of the Golden Door
 
 ## Story:
 You are Alex, a curious adventurer who has ventured into the Ancient Labyrinth, a mysterious maze said to be filled with treasure and secrets. However, the maze is not just a place of riches – it's also a place of danger, with twisting corridors, hidden traps, and locked doors.
