@@ -54,11 +54,12 @@ try:
     button_width = button_normal.get_width()
     button_height = button_normal.get_height()
     button_images_loaded = True
-except (pygame.error, FileNotFoundError):
+    print(f"Button images loaded successfully: {button_width}x{button_height}")
+except (pygame.error, FileNotFoundError) as e:
     button_images_loaded = False
     button_width = 200
     button_height = 60
-    print("Warning: Could not load button images - using drawn button fallback")
+    print(f"Warning: Could not load button images - using drawn button fallback. Error: {e}")
 
 # Button class
 class Button:
