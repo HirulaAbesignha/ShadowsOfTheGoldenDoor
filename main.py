@@ -34,6 +34,18 @@ subtitle_font = pygame.font.Font(None, 36)
 button_font = pygame.font.Font(None, 48)
 instruction_font = pygame.font.Font(None, 24)
 
+# Load logo image
+try:
+    logo_image = pygame.image.load('logo/SH logo.png')
+    # Scale the logo to a reasonable size (adjust as needed)
+    logo_width = 800
+    logo_height = int(logo_image.get_height() * (logo_width / logo_image.get_width()))
+    logo_image = pygame.transform.scale(logo_image, (logo_width, logo_height))
+    logo_loaded = True
+except (pygame.error, FileNotFoundError):
+    logo_loaded = False
+    print("Warning: Could not load logo/SH logo.png - using text fallback")
+
 # Button class
 class Button:
     def __init__(self, x, y, width, height, text, font):
@@ -86,25 +98,30 @@ def draw_title_screen():
     """Draw the title screen"""
     screen.fill(BACKGROUND_COLOR)
     
-    # Draw title with shadow effect
-    title_text = "Shadows of the"
-    title_surface = title_font.render(title_text, True, SHADOW_COLOR)
-    title_rect = title_surface.get_rect(center=(WINDOW_WIDTH // 2 + 2, 150 + 2))
-    screen.blit(title_surface, title_rect)
-    
-    title_surface = title_font.render(title_text, True, WHITE)
-    title_rect = title_surface.get_rect(center=(WINDOW_WIDTH // 2, 150))
-    screen.blit(title_surface, title_rect)
-    
-    # Draw "Golden Door" in gold
-    golden_text = "Golden Door"
-    golden_surface = title_font.render(golden_text, True, SHADOW_COLOR)
-    golden_rect = golden_surface.get_rect(center=(WINDOW_WIDTH // 2 + 2, 220 + 2))
-    screen.blit(golden_surface, golden_rect)
-    
-    golden_surface = title_font.render(golden_text, True, GOLD)
-    golden_rect = golden_surface.get_rect(center=(WINDOW_WIDTH // 2, 220))
-    screen.blit(golden_surface, golden_rect)
+    # Draw logo if loaded, otherwise use text fallback
+    if logo_loaded:
+        logo_rect = logo_image.get_rect(center=(WINDOW_WIDTH // 2, 290))
+        screen.blit(logo_image, logo_rect)
+    else:
+        # Draw title with shadow effect (fallback)
+        title_text = "Shadows of the"
+        title_surface = title_font.render(title_text, True, SHADOW_COLOR)
+        title_rect = title_surface.get_rect(center=(WINDOW_WIDTH // 2 + 2, 150 + 2))
+        screen.blit(title_surface, title_rect)
+        
+        title_surface = title_font.render(title_text, True, WHITE)
+        title_rect = title_surface.get_rect(center=(WINDOW_WIDTH // 2, 150))
+        screen.blit(title_surface, title_rect)
+        
+        # Draw "Golden Door" in gold
+        golden_text = "Golden Door"
+        golden_surface = title_font.render(golden_text, True, SHADOW_COLOR)
+        golden_rect = golden_surface.get_rect(center=(WINDOW_WIDTH // 2 + 2, 220 + 2))
+        screen.blit(golden_surface, golden_rect)
+        
+        golden_surface = title_font.render(golden_text, True, GOLD)
+        golden_rect = golden_surface.get_rect(center=(WINDOW_WIDTH // 2, 220))
+        screen.blit(golden_surface, golden_rect)
     
     # Draw subtitle
     subtitle_text = "Find the three lost keys to escape"
