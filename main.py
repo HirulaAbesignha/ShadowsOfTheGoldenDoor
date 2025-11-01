@@ -36,7 +36,7 @@ instruction_font = pygame.font.Font(None, 24)
 
 # Load logo image
 try:
-    logo_image = pygame.image.load('logo/SH logo.png')
+    logo_image = pygame.image.load('assets/logo/SH logo.png')
     # Scale the logo to a reasonable size (adjust as needed)
     logo_width = 800
     logo_height = int(logo_image.get_height() * (logo_width / logo_image.get_width()))
@@ -46,30 +46,48 @@ except (pygame.error, FileNotFoundError):
     logo_loaded = False
     print("Warning: Could not load logo/SH logo.png - using text fallback")
 
+# Load button images
+try:
+    button_normal = pygame.image.load('assets/button/start_button.png')
+    button_hover = pygame.image.load('assets/button/start_button_hover.png')
+    # Get original button dimensions from the image
+    button_width = button_normal.get_width()
+    button_height = button_normal.get_height()
+    button_images_loaded = True
+except (pygame.error, FileNotFoundError):
+    button_images_loaded = False
+    button_width = 200
+    button_height = 60
+    print("Warning: Could not load button images - using drawn button fallback")
+
 # Button class
 class Button:
-    def __init__(self, x, y, width, height, text, font):
+    def __init__(self, x, y, width, height):
         self.rect = pygame.Rect(x, y, width, height)
-        self.text = text
-        self.font = font
         self.hovered = False
+        
+        # If button images are loaded, use them as-is (no scaling)
+        if button_images_loaded:
+            self.normal_image = button_normal
+            self.hover_image = button_hover
     
     def draw(self, surface):
-        # Draw shadow
-        shadow_rect = self.rect.copy()
-        shadow_rect.x += 4
-        shadow_rect.y += 4
-        pygame.draw.rect(surface, SHADOW_COLOR, shadow_rect, border_radius=10)
-        
-        # Draw button
-        color = BUTTON_HOVER if self.hovered else GOLD
-        pygame.draw.rect(surface, color, self.rect, border_radius=10)
-        pygame.draw.rect(surface, DARK_GOLD, self.rect, 3, border_radius=10)
-        
-        # Draw text
-        text_surface = self.font.render(self.text, True, BACKGROUND_COLOR)
-        text_rect = text_surface.get_rect(center=self.rect.center)
-        surface.blit(text_surface, text_rect)
+        if button_images_loaded:
+            # Use PNG images
+            image = self.hover_image if self.hovered else self.normal_image
+            surface.blit(image, self.rect)
+        else:
+            # Fallback to drawn button
+            # Draw shadow
+            shadow_rect = self.rect.copy()
+            shadow_rect.x += 4
+            shadow_rect.y += 4
+            pygame.draw.rect(surface, SHADOW_COLOR, shadow_rect, border_radius=10)
+            
+            # Draw button
+            color = BUTTON_HOVER if self.hovered else GOLD
+            pygame.draw.rect(surface, color, self.rect, border_radius=10)
+            pygame.draw.rect(surface, DARK_GOLD, self.rect, 3, border_radius=10)
     
     def check_hover(self, pos):
         self.hovered = self.rect.collidepoint(pos)
@@ -91,7 +109,7 @@ player_pos = pygame.math.Vector2(
 )
 
 # Initialize game objects
-start_button = Button(WINDOW_WIDTH // 2 - 100, WINDOW_HEIGHT // 2 + 50, 200, 60, "START", button_font)
+start_button = Button(WINDOW_WIDTH // 2 - button_width // 2, WINDOW_HEIGHT // 2 + 50, button_width, button_height)
 game_state = TITLE_SCREEN
 
 def draw_title_screen():
